@@ -20,10 +20,11 @@ router.get("/", async (req, res) => {
 		}
 
 		if (!results.length) {
-			return res.status(204)
+			res.status(204).json({})
+		} else {
+			res.json(results)
 		}
 
-		res.json(results)
 
 	} catch(err) {
 		res.json(err)
@@ -44,11 +45,11 @@ router.get("/:id", async (req, res) => {
 			}
 		})
 
-		if (!results.length) {
-			return res.status(204)
+		if (!results) {
+			res.status(204).json({})
+		} else {
+			res.json(results)
 		}
-
-		res.json(results)
 
 	} catch(err) {
 		res.json(err)

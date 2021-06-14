@@ -8,6 +8,7 @@
   "scripts": {
     "test": "jest",
     "start": "node server.js",
+    "dev": "nodemon server.js",
     "git": "git init && git status && git add ."
   },
   "author": "",
