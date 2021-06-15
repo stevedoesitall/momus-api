@@ -15,7 +15,7 @@ API serving the Momus.io web app
 ### Database
 
 - PostgreSQL
-- Prisma
+- Prisma ORM
 - Deployed via ElephantSQL
 
 ## Current Tables

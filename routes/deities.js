@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 		}
 
 		if (!results.length) {
-			res.status(204).json({})
+			res.status(204)
 		} else {
 			res.json(results)
 		}
