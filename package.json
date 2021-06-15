@@ -21,6 +21,9 @@
     "pg": "^8.6.0"
   },
   "devDependencies": {
+    "eslint": "^7.28.0",
+    "jest": "^27.0.4",
+    "node-fetch": "^2.6.1",
     "prisma": "^2.24.1"
   }
 }

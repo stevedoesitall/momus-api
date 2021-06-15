@@ -2,5 +2,6 @@
 /public/build/
 .env
 /tests
+.eslintrc.json
 
 .DS_Store
