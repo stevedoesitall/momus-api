@@ -4,6 +4,8 @@
 
 API serving the Momus.io web app
 
+`https://api.momus.io/{route}`
+
 ## Stack
 
 ### Server
@@ -18,7 +20,7 @@ API serving the Momus.io web app
 - Prisma ORM
 - Deployed via ElephantSQL
 
-## Current Tables
+## Routes/Tables
 
 - Authors
 - Works
