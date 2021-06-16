@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 		}
 
 		if (!results.length) {
-			return res.json({})
+			return res.status(204).json()
 		} 
 		
 		res.json(results)
@@ -44,7 +44,7 @@ router.get("/:id", async (req, res) => {
 		})
 
 		if (!results) {
-			return res.json({})
+			return res.status(204).json()
 		}
 
 		res.json(results)
