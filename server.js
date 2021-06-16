@@ -10,7 +10,6 @@ const port = process.env.PORT || 8081
 
 const deitiesRoute = require("./routes/deities")
 
-app.use(express.static("public"))
 app.use("/deities", deitiesRoute)
 
 app.get("*", (req, res) => {
