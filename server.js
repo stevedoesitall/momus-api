@@ -17,10 +17,9 @@ const deitiesRoute = require("./routes/deities")
 app.use("/deities", deitiesRoute)
 
 app.get("*", (req, res) => {
-    res.send({
-        message: "Bad request",
-        status: 404
-    })
+    res.status(404).json({
+		err: "Bad Request"
+	})
 })
 
 app.listen(port, err => {

@@ -22,10 +22,10 @@ router.get("/", async (req, res) => {
 			return res.status(204).json()
 		} 
 		
-		res.json(results)
+		res.status(200).json(results)
 
 	} catch(err) {
-		res.json(err)
+		res.status(404).json(err)
 
 	} finally {
 		prisma.$disconnect()
@@ -47,11 +47,11 @@ router.get("/:id", async (req, res) => {
 			return res.status(204).json()
 		}
 
-		res.json(results)
+		res.status(200).json(results)
 
 	} catch(err) {
-		res.json(err)
-
+		res.status(404).json(err)
+		
 	} finally {
 		prisma.$disconnect()
 	}
