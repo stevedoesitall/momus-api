@@ -2,8 +2,12 @@ const express = require("express")
 const app = express()
 const cors = require('cors')
 
-app.use(express.urlencoded({ extended: false }))
+// Needed for POST/PUT requests; not currently functional
+// express.urlencoded parses URL encoded data from req.body
+// express.json parses JSON encoded data from req.body
+app.use(express.urlencoded({ extended: false })) 
 app.use(express.json())
+
 app.use(cors())
 
 const port = process.env.PORT || 8081
