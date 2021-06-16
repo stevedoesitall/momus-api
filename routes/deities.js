@@ -7,11 +7,10 @@ const prisma = new PrismaClient()
 router.get("/", async (req, res) => {
 	// const allowedParams = [ "domain", "name", "region" ]
 	const queryParams = req.query
-	const hasParams = Object.keys(queryParams).length
+	const hasParams = !!Object.keys(queryParams).length
 
 	try {
 		let results
-
 		if (hasParams) {
 			const domain = queryParams.domain.toLowerCase()
 			results = await prisma.$queryRaw(`SELECT * FROM deities WHERE '${domain}' = ANY(domain)`)
@@ -20,11 +19,10 @@ router.get("/", async (req, res) => {
 		}
 
 		if (!results.length) {
-			res.status(204)
-		} else {
-			res.json(results)
-		}
-
+			return res.json({})
+		} 
+		
+		res.json(results)
 
 	} catch(err) {
 		res.json(err)
@@ -46,10 +44,10 @@ router.get("/:id", async (req, res) => {
 		})
 
 		if (!results) {
-			res.status(204).json({})
-		} else {
-			res.json(results)
+			return res.json({})
 		}
+
+		res.json(results)
 
 	} catch(err) {
 		res.json(err)
