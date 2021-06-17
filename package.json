@@ -11,9 +11,9 @@
     "dev": "nodemon server.js",
     "git": "git init && git status && git add ."
   },
-  "author": "",
+  "author": "Steve Giordano",
   "license": "ISC",
-  "description": "",
+  "description": "API for Momus.io",
   "dependencies": {
     "@prisma/client": "^2.24.1",
     "cors": "^2.8.5",

@@ -3,8 +3,6 @@ const app = express()
 const cors = require('cors')
 
 // Needed for POST/PUT requests; not currently functional
-// express.urlencoded parses URL encoded data from req.body
-// express.json parses JSON encoded data from req.body
 app.use(express.urlencoded({ extended: false })) 
 app.use(express.json())
 
