@@ -9,7 +9,8 @@
     "test": "jest",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "git": "git init && git status && git add ."
+    "git": "git init && git status && git add .",
+    "git_full": "git init && git status && git add . && git commit -m 'Latest updates' && git push"
   },
   "author": "Steve Giordano",
   "license": "ISC",

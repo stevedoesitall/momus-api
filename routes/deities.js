@@ -5,6 +5,15 @@ const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 
 router.get("/", async (req, res) => {
+	const auth = req.headers.authorization
+
+	if (auth !== process.env.API_KEY) {
+	
+		return res.status(401).json({
+			"error": "Invalid credentials."
+		})
+	}
+
 	// const allowedParams = [ "domain", "name", "region" ]
 	const queryParams = req.query
 	const hasParams = !!Object.keys(queryParams).length
@@ -55,6 +64,18 @@ router.get("/:id", async (req, res) => {
 	} finally {
 		prisma.$disconnect()
 	}
+})
+
+router.post("/", (req, res) => {
+	res.status(405).json({
+		"error": "Not authorized to POST via the /deities endpoint."
+	})
+})
+
+router.delete("/", (req, res) => {
+	res.status(405).json({
+		"error": "Not authorized to DELETE via the /deities endpoint."
+	})
 })
 
 module.exports = router

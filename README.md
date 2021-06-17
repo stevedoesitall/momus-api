@@ -12,8 +12,8 @@ See the web repo here: `https://github.com/stevedoesitall/momus-web`
 
 ### Server
 
-- Node
-- Express
+- Node.js
+- Express.js
 - Deployed via Heroku
 
 ### Database
