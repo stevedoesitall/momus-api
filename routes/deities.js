@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
 	const auth = req.headers.authorization
 
 	if (auth !== process.env.API_KEY) {
-	
+		console.log(auth, process.env.API_KEY)
 		return res.status(401).json({
 			"error": "Invalid credentials."
 		})
