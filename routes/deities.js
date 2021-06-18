@@ -42,6 +42,15 @@ router.get("/", async (req, res) => {
 })
 
 router.get("/:id", async (req, res) => {
+	const auth = req.headers.authorization
+
+	if (auth !== process.env.API_KEY) {
+		console.log(auth, process.env.API_KEY)
+		return res.status(401).json({
+			"error": "Invalid credentials."
+		})
+	}
+	
 	try {
 		let { id } = req.params
 		id = parseInt(id)
