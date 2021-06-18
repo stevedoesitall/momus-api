@@ -5,17 +5,17 @@ const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 
 router.get("/", async (req, res) => {
-	const auth = req.headers.authorization
+	const queryParams = req.query
 
-	if (auth !== process.env.API_KEY) {
-		console.log(auth, process.env.API_KEY)
+	if (queryParams.api_key !== process.env.API_KEY) {
 		return res.status(401).json({
 			"error": "Invalid credentials."
 		})
 	}
 
+	delete queryParams.api_key
 	// const allowedParams = [ "domain", "name", "region" ]
-	const queryParams = req.query
+	
 	const hasParams = !!Object.keys(queryParams).length
 
 	try {
@@ -42,10 +42,9 @@ router.get("/", async (req, res) => {
 })
 
 router.get("/:id", async (req, res) => {
-	const auth = req.headers.authorization
+	const queryParams = req.query
 
-	if (auth !== process.env.API_KEY) {
-		console.log(auth, process.env.API_KEY)
+	if (queryParams.api_key !== process.env.API_KEY) {
 		return res.status(401).json({
 			"error": "Invalid credentials."
 		})
