@@ -1,6 +1,9 @@
-const express = require("express")
+import express from "express"
+import cors from "cors"
+
+import { deitiesRoute } from "./routes/deities.js"
+
 const app = express()
-const cors = require('cors')
 
 // Needed for POST/PUT requests; not currently functional
 app.use(express.urlencoded({ extended: false })) 
@@ -9,8 +12,6 @@ app.use(express.json())
 app.use(cors())
 
 const port = process.env.PORT || 8081
-
-const deitiesRoute = require("./routes/deities")
 
 app.use("/deities", deitiesRoute)
 

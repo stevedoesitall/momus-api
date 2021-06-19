@@ -1,9 +1,33 @@
 {
   "name": "api",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
     "node": "16.x"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "mjs"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+    },
+    "ignorePatterns": [
+        "*.test.*"
+    ]
   },
   "scripts": {
     "test": "jest",
@@ -22,6 +46,7 @@
     "pg": "^8.6.0"
   },
   "devDependencies": {
+    "dotenv": "^10.0.0",
     "eslint": "^7.28.0",
     "jest": "^27.0.4",
     "node-fetch": "^2.6.1",

@@ -1,7 +1,10 @@
-const express = require("express")
+import express from "express"
+import pkg from "@prisma/client"
+
+const { PrismaClient } = pkg
+
 const router = express.Router()
 
-const { PrismaClient } = require("@prisma/client")
 const prisma = new PrismaClient()
 
 router.get("/", async (req, res) => {
@@ -22,6 +25,7 @@ router.get("/", async (req, res) => {
 		let results
 		if (hasParams) {
 			const domain = queryParams.domain.toLowerCase()
+
 			results = await prisma.$queryRaw(`SELECT * FROM deities WHERE '${domain}' = ANY(domain)`)
 		} else {
 			results = await prisma.deities.findMany()
@@ -86,4 +90,4 @@ router.delete("/", (req, res) => {
 	})
 })
 
-module.exports = router
+export { router as deitiesRoute }
