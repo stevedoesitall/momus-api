@@ -14,19 +14,18 @@
   },
   "eslintConfig": {
     "env": {
-        "commonjs": true,
-        "es2021": true,
-        "node": true
+      "commonjs": true,
+      "es2021": true,
+      "node": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
+      "ecmaVersion": 12,
+      "sourceType": "module"
     },
-    "rules": {
-    },
+    "rules": {},
     "ignorePatterns": [
-        "*.test.*"
+      "*.test.*"
     ]
   },
   "scripts": {
@@ -42,8 +41,7 @@
   "dependencies": {
     "@prisma/client": "^2.24.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "pg": "^8.6.0"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "dotenv": "^10.0.0",
