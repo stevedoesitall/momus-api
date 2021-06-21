@@ -2,13 +2,12 @@ import express from "express"
 import pkg from "@prisma/client"
 
 const { PrismaClient } = pkg
-
 const router = express.Router()
-
 const prisma = new PrismaClient()
 
 router.get("/", async (req, res) => {
 	const queryParams = req.query
+	let allDomains = []
 
 	if (queryParams.api_key !== process.env.API_KEY) {
 		return res.status(401).json({
@@ -25,17 +24,26 @@ router.get("/", async (req, res) => {
 		let results
 		if (hasParams) {
 			const domain = queryParams.domain.toLowerCase()
-
 			results = await prisma.$queryRaw(`SELECT * FROM deities WHERE '${domain}' = ANY(domain)`)
+
 		} else {
 			results = await prisma.deities.findMany()
+			results.forEach(deity => {
+				allDomains = [...allDomains, ...deity.domain]
+			})
+
+			allDomains = [...new Set(allDomains)]
 		}
 
 		if (!results.length) {
 			return res.status(204).json()
 		} 
 		
-		res.status(200).json(results)
+		res.status(200).json(
+			allDomains.length ?
+			{ domains: allDomains, results } :
+			results
+		)
 
 	} catch(err) {
 		res.status(404).json(err)
@@ -79,12 +87,14 @@ router.get("/:id", async (req, res) => {
 })
 
 router.post("/", (req, res) => {
+	console.log(req)
 	res.status(405).json({
 		"error": "Not authorized to POST via the /deities endpoint."
 	})
 })
 
 router.delete("/", (req, res) => {
+	console.log(req)
 	res.status(405).json({
 		"error": "Not authorized to DELETE via the /deities endpoint."
 	})
